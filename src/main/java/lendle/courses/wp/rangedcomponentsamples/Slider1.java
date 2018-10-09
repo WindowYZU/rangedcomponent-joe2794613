@@ -8,7 +8,10 @@ package lendle.courses.wp.rangedcomponentsamples;
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
 import javax.swing.JSlider;
+import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -46,6 +49,16 @@ public class Slider1 {
         slider.setMajorTickSpacing(20);
         frame.add(slider);
         
+        JTextField textField=new JTextField();
+        textField.setColumns(20);
+        textField.setText("50");
+        frame.add(textField);
+        slider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                textField.setText(""+slider.getValue());
+            }
+        });
         //////////////////////////////////
         
         frame.setVisible(true);
